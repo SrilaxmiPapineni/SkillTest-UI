@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-2">
+            <form>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group form-inline">
+                            <input class="form-control ml-2 searchText" type="text" placeholder="First Name/Sur Name/Telephone"
+                                [formControl]="filter" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary float-right" (click)="addNewContact(content)"><i
+                                class="fa fa-plus" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-12 tabledata">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Sur Name</th>
+                        <th>Telephone</th>
+                        <th>Cell</th>
+                        <th>Email</th>
+                        <th>Updated Date</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let contact of contacts$ | async; index as i">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ contact.firstName }}</td>
+                        <td>{{ contact.surName }}</td>
+                        <td>{{ contact.tel }}</td>
+                        <td>{{ contact.cell }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>{{ contact.updatedDate | date: 'MM/dd/yyyy' }}</td>
+                        <td>
+                            <button type="button" class="btn btn-info" (click)="editContact(content, contact)"><i
+                                    class="fa fa-pencil" aria-hidden="true"></i></button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" (click)="deleteContact(contact)"><i
+                                    class="fa fa-times" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title">{{title}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <app-add-edit-contact #contact [id]="id"></app-add-edit-contact>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="saveorUpdateContact(contact)">{{submitType}}</button>
+            <button type="button" class="btn btn-primary" (click)="modal.dismiss()">Cancel</button>
+        </div>
+    </ng-template>
+</div>

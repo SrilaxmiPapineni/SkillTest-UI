@@ -1,0 +1,24 @@
+<form>
+    <div class="form-group">
+        <label for="firstname-input">First Name</label>
+        <input class="form-control" type="text" [(ngModel)]="contactModel.firstName" placeholder="Enter First Name"
+            name="firstName">
+    </div>
+    <div class="form-group">
+        <label for="surname-input">Sur Name</label>
+        <input class="form-control" type="text" [(ngModel)]="contactModel.surName" placeholder="Enter Sur Name"
+            name="surName">
+    </div>
+    <div class="form-group">
+        <label for="tel-input">Telephone</label>
+        <input class="form-control" type="text" [(ngModel)]="contactModel.tel" placeholder="Enter Telephone" name="tel">
+    </div>
+    <div class="form-group">
+        <label for="cell-input">Cell</label>
+        <input class="form-control" type="text" [(ngModel)]="contactModel.cell" placeholder="Enter Cell" name="cell">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" [(ngModel)]="contactModel.email" placeholder="Enter email" name="email">
+    </div>
+</form>
